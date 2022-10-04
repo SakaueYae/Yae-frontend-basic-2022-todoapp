@@ -14,7 +14,6 @@ const AddTaskButton = (props) => {
 export default AddTaskButton;
 
 const PlusButton = styled.button`
-  width: fit-content;
   border-radius: 12px;
   padding: 2px 6px;
   display: flex;
@@ -24,6 +23,10 @@ const PlusButton = styled.button`
 
   &:hover {
     background-color: rgba(70, 163, 129, 0.2);
+  }
+
+  img {
+    width: 20px;
   }
 
   p {
