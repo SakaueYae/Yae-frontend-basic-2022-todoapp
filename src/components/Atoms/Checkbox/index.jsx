@@ -3,9 +3,9 @@ import styled from "styled-components";
 import check from "../../../assets/svg/check.svg";
 import COLOR from "../../../variables/color";
 
-const Checkbox = () => {
+const Checkbox = (props) => {
   return (
-    <SquareButton>
+    <SquareButton onClick={props.onClick}>
       <img src={check} alt="チェックボックス" />
     </SquareButton>
   );
@@ -19,8 +19,16 @@ const SquareButton = styled.button`
   border: 2px solid ${COLOR.LIGHT_GRAY};
   border-radius: 2px;
   background-color: inherit;
+  cursor: pointer;
 
   img {
     width: 15px;
+    visibility: hidden;
+  }
+
+  &:hover {
+    img {
+      visibility: visible;
+    }
   }
 `;
