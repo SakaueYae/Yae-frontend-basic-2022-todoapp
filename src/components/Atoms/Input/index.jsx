@@ -6,10 +6,10 @@ const Input = () => {
   const ref = useRef(null);
 
   useEffect(() => {
-    ref.current.style.width = "1000px";
+    ref.current.value = "";
   }, []);
 
-  return <InputForm ref={ref}></InputForm>;
+  return <InputForm id="input" ref={ref}></InputForm>;
 };
 export default Input;
 
