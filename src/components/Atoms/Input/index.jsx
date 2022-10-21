@@ -2,14 +2,23 @@ import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import COLOR from "../../../variables/color";
 
-const Input = () => {
+const Input = (props) => {
   const ref = useRef(null);
 
+  //Javaでいうコンストラクタ？
   useEffect(() => {
-    ref.current.value = "";
+    ref.current.focus();
+    ref.current.onblur = onEditComplete;
   }, []);
 
-  return <InputForm id="input" ref={ref}></InputForm>;
+  return (
+    <InputForm
+      id="input"
+      value={props.defaultValue}
+      ref={ref}
+      //  onBlur={onEditComplete}
+    ></InputForm>
+  );
 };
 export default Input;
 
@@ -22,3 +31,7 @@ const InputForm = styled.input`
   color: ${COLOR.LIGHT_GRAY};
   padding: 0px 4px;
 `;
+
+const onEditComplete = () => {
+  console.log("end");
+};
