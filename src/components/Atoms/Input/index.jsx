@@ -9,6 +9,11 @@ const Input = (props) => {
   useEffect(() => {
     ref.current.focus();
     ref.current.onblur = onEditComplete;
+    ref.current.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        ref.current.onkeydown = onEditComplete;
+      }
+    });
   }, []);
 
   return (
@@ -16,6 +21,7 @@ const Input = (props) => {
       id="input"
       value={props.defaultValue}
       ref={ref}
+      //onKeyDown={onEditComplete}
       //  onBlur={onEditComplete}
     ></InputForm>
   );
