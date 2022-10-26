@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import COLOR from "../../../variables/color";
 
-const Input = (props) => {
+const Input = ({ defaultValue, onEditComplete, color }) => {
   const ref = useRef(null);
 
   //Javaでいうコンストラクタ？
@@ -11,16 +11,19 @@ const Input = (props) => {
     ref.current.onblur = onEditComplete;
     ref.current.addEventListener("keydown", function (event) {
       if (event.key === "Enter") {
-        ref.current.onkeydown = onEditComplete;
+        onEditComplete;
       }
     });
+    ref.current.style.color = color;
   }, []);
 
   return (
     <InputForm
       id="input"
-      value={props.defaultValue}
+      defalutValue={defaultValue}
       ref={ref}
+      onEditComplete={() => console.log("(o A o)")}
+      color="red"
       //onKeyDown={onEditComplete}
       //  onBlur={onEditComplete}
     ></InputForm>
@@ -37,7 +40,3 @@ const InputForm = styled.input`
   color: ${COLOR.LIGHT_GRAY};
   padding: 0px 4px;
 `;
-
-const onEditComplete = () => {
-  console.log("end");
-};
