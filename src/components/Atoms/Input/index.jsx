@@ -2,10 +2,9 @@ import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import COLOR from "../../../variables/color";
 
-const Input = ({ defaultValue, onEditComplete, color }) => {
+const Input = ({ defaultValue, onEditComplete }) => {
   const ref = useRef(null);
 
-  //Javaでいうコンストラクタ？
   useEffect(() => {
     ref.current.focus();
     ref.current.onblur = onEditComplete;
@@ -14,19 +13,10 @@ const Input = ({ defaultValue, onEditComplete, color }) => {
         onEditComplete;
       }
     });
-    ref.current.style.color = color;
   }, []);
 
   return (
-    <InputForm
-      id="input"
-      defalutValue={defaultValue}
-      ref={ref}
-      onEditComplete={() => console.log("(o A o)")}
-      color="red"
-      //onKeyDown={onEditComplete}
-      //  onBlur={onEditComplete}
-    ></InputForm>
+    <InputForm id="input" defalutValue={defaultValue} ref={ref}></InputForm>
   );
 };
 export default Input;
