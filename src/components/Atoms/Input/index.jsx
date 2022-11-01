@@ -3,22 +3,22 @@ import styled from "styled-components";
 import COLOR from "../../../variables/color";
 import TEXT from "../../../variables/texts";
 
-const Input = ({ defaultValue, onEditComplete }) => {
+const Input = (props) => {
   const ref = useRef(null);
 
   useEffect(() => {
     ref.current.focus();
-    ref.current.onblur = onEditComplete;
+    ref.current.addEventListener("blur", function () {
+      props.onEditComplete(ref.current.value);
+    });
     ref.current.addEventListener("keydown", function (event) {
       if (event.key === "Enter") {
-        onEditComplete;
+        props.onEditComplete(ref.current.value);
       }
     });
   }, []);
 
-  return (
-    <InputForm id="input" defalutValue={defaultValue} ref={ref}></InputForm>
-  );
+  return <InputForm ref={ref} defaultValue={props.defaultValue}></InputForm>;
 };
 export default Input;
 
