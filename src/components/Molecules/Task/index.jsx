@@ -18,22 +18,19 @@ const Task = ({ onTaskChange, onTaskComplete, taskName, defaultIsEditing }) => {
     setIsEditing(true);
   };
 
-  if (isEditing === true) {
-    return (
-      <StyledTask>
-        <Checkbox onClick={onTaskComplete} />
+  return (
+    <StyledTask>
+      <Checkbox onClick={onTaskComplete} />
+      {isEditing ? (
         <Input defaultValue={taskName} onEditComplete={onEditComplete} />
-      </StyledTask>
-    );
-  } else {
-    return (
-      <StyledTask>
-        <Checkbox onClick={onTaskComplete} />
-        <StyledTaskName>{taskName}</StyledTaskName>
-        <EditButton onClick={onEditButtonClick} />
-      </StyledTask>
-    );
-  }
+      ) : (
+        <>
+          <StyledTaskName>{taskName}</StyledTaskName>
+          <EditButton onClick={onEditButtonClick} />
+        </>
+      )}
+    </StyledTask>
+  );
 };
 export default Task;
 
