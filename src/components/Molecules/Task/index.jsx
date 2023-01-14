@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Checkbox from "../../Atoms/Checkbox";
 import Input from "../../Atoms/Input";
@@ -6,52 +6,31 @@ import EditButton from "../../Atoms/EditButton";
 import COLOR from "../../../variables/color";
 import TEXT from "../../../variables/texts";
 
-const Task = ({ onEditComplete, defaultValue, taskName, taskNameChange }) => {
-  const [onEdit, setOnEdit] = useState(false);
-  const [text, setText] = useState("");
-  const ref = useRef(null);
+const Task = ({ onTaskChange, onTaskComplete, taskName, defaultIsEditing }) => {
+  const [isEditing, setIsEditing] = useState(defaultIsEditing);
 
-  useEffect(() => {
-    console.log(ref.current);
-  }, []);
+  const onEditComplete = (value) => {
+    setIsEditing(false);
+    onTaskChange(value);
+  };
 
-  if (onEdit === true) {
+  const onEditButtonClick = () => {
+    setIsEditing(true);
+  };
+
+  if (isEditing === true) {
     return (
-      <StyledTask taskName={taskName}>
-        <Checkbox
-          onClick={() => {
-            setOnEdit(!onEdit);
-            console.log("task completed");
-          }}
-        />
-        <Input
-          onEditComplete={() => {
-            setOnEdit(!onEdit);
-            onEditComplete(ref.current);
-            //onEditComplete({ taskName });
-            //setText(ref.current);
-          }}
-          defaultValue={defaultValue}
-          ref={ref}
-        />
+      <StyledTask>
+        <Checkbox onClick={onTaskComplete} />
+        <Input defaultValue={taskName} onEditComplete={onEditComplete} />
       </StyledTask>
     );
   } else {
     return (
       <StyledTask>
-        <Checkbox
-          onClick={() => {
-            setOnEdit(!onEdit);
-            console.log("task completed");
-          }}
-        />
-        <StyledTaskName>taskname</StyledTaskName>
-        <EditButton
-          onClick={() => {
-            setOnEdit(!onEdit);
-            console.log("onEdit:" + onEdit);
-          }}
-        />
+        <Checkbox onClick={onTaskComplete} />
+        <StyledTaskName>{taskName}</StyledTaskName>
+        <EditButton onClick={onEditButtonClick} />
       </StyledTask>
     );
   }

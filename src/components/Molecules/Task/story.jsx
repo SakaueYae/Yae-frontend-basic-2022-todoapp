@@ -15,5 +15,8 @@ const Template = (args) => <Component {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  onEditComplete: (value) => console.log("edit complete:　" + value),
+  onTaskChange: (value) => console.log("taskname changed: " + value),
+  onTaskComplete: () => console.log("task completed"),
+  taskName: "taskname",
+  defaultIsEditing: false,
 };
