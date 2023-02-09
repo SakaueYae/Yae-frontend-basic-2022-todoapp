@@ -37,15 +37,18 @@ export default Task;
 const StyledTask = styled.div`
   display: flex;
   padding: 2px 6px;
-  width: fit-content;
   color: ${COLOR.LIGHT_GRAY};
   ${TEXT.S}
+
   input {
     margin-left: 10px;
   }
 `;
 
 const StyledTaskName = styled.div`
-  width: 196px;
+  width: 100%;
   margin-left: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
