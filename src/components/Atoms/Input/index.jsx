@@ -23,7 +23,7 @@ const Input = ({ defaultValue, onEditComplete }) => {
 export default Input;
 
 const StyledInput = styled.input`
-  width: 232px;
+  width: 100%;
   background-color: ${COLOR.BLACK};
   border: none;
   outline: none;
