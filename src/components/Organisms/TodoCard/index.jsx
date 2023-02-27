@@ -65,9 +65,7 @@ const StyledCard = styled.div`
 `;
 
 const StyledTaskList = styled.div`
-  margin-top: 12px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 12px
+  & > div {
+    margin-top: 12px;
+  }
 `;
