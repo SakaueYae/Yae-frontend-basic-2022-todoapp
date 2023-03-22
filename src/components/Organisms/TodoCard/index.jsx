@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import AddTaskButton from "../../Atoms/AddTaskButton";
 import Task from "../../Molecules/Task";
@@ -22,12 +22,23 @@ const TodoCard = () => {
       setTaskList(
         taskList.map((task, index) =>
           index === renameIndex
-            ? { name: value, initializing: task.initializing }
+            ? { name: value, initializing: (task.initializing = false) }
             : task
         )
       );
     }
   };
+
+  useEffect(() => {
+    const data = localStorage.getItem("taskList");
+    if (data !== null) {
+      setTaskList(JSON.parse(data));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("taskList", JSON.stringify(taskList));
+  }, [taskList]);
 
   const onTaskComplete = (removeIndex) => {
     setTaskList(
