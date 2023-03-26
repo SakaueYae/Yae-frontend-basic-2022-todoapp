@@ -22,7 +22,7 @@ const TodoCard = () => {
       setTaskList(
         taskList.map((task, index) =>
           index === renameIndex
-            ? { name: value, initializing: (task.initializing = false) }
+            ? { name: value, initializing: !task.initializing }
             : task
         )
       );
