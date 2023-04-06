@@ -9,11 +9,11 @@ export const AlertHandlerProvider = ({ children }) => {
   });
 
   const setAlert = (errorText) => {
-    setAlertState([...alertState, { visible: true, errorText: errorText }]);
+    setAlertState({ visible: true, errorText: errorText });
   };
 
   const closeAlert = () => {
-    setAlertState([...alertState, { visible: false }]);
+    setAlertState({ ...alertState, visible: false });
   };
 
   const contextValue = {

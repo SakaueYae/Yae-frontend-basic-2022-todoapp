@@ -13,8 +13,8 @@ const Container = styled.div`
   background-color: ${COLOR.RED};
   ${TEXT.S}
   padding: 10px 20px;
+  width: 100%;
   max-width: 400px;
   border-radius: 4px;
-
   display: ${(props) => (props.isActive ? "" : "none")};
 `;
