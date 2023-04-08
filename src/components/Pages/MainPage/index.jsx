@@ -41,6 +41,5 @@ const AlertContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  position: absolute;
   top: 20px;
 `;
